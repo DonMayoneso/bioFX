@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificación de Cuenta - BioFX</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #2eb198 0%, #9bc431 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+            overflow: hidden;
+        }
+        
+        .header {
+            background-color: #616160;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 5px solid #9bc431;
+        }
+        
+        .logo {
+            max-width: 180px;
+            height: auto;
+            filter: brightness(0) invert(1);
+        }
+        
+        .content {
+            padding: 40px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #616160;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .status-box {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+            border-left: 4px solid #2eb198;
+        }
+        
+        .parameter {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .parameter:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .label {
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .value {
+            color: #2eb198;
+            word-break: break-all;
+            text-align: right;
+            max-width: 60%;
+            font-weight: 500;
+        }
+        
+        .button {
+            background: linear-gradient(to right, #2eb198, #9bc431);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 14px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            width: 100%;
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(43, 177, 152, 0.3);
+        }
+        
+        .button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .success {
+            color: #2eb198;
+            font-weight: 600;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e8f8f5;
+            border-radius: 5px;
+        }
+        
+        .error {
+            color: #e74c3c;
+            font-weight: 600;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fdedec;
+            border-radius: 5px;
+        }
+        
+        .console {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 25px;
+            font-family: monospace;
+            font-size: 14px;
+            text-align: left;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        
+        .console-title {
+            color: #a0aec0;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .instructions {
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 25px;
+            text-align: left;
+            font-size: 14px;
+            color: #616160;
+        }
+        
+        .instructions h3 {
+            margin-bottom: 10px;
+            color: #616160;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 5px;
+        }
+        
+        .instructions ul {
+            padding-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 5px;
+        }
+        
+        .footer {
+            margin-top: 20px;
+            color: #616160;
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        @media (max-width: 600px) {
+            .content {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .parameter {
+                flex-direction: column;
+                text-align: left;
+            }
+            
+            .value {
+                max-width: 100%;
+                text-align: left;
+                margin-top: 5px;
+            }
+            
+            .logo {
+                max-width: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- Logo de la empresa - reemplaza "logo.png" con la ruta correcta -->
+            <img src="logo.png" alt="BioFX Logo" class="logo">
+        </div>
+        
+        <div class="content">
+            <h1>Verificación de Cuenta</h1>
+            <p class="subtitle">Confirma tu dirección de correo electrónico</p>
+            
+            <div class="status-box">
+                <div class="parameter">
+                    <span class="label">Token:</span>
+                    <span id="token-value" class="value">No se encontró token</span>
+                </div>
+                <div class="parameter">
+                    <span class="label">Email:</span>
+                    <span id="email-value" class="value">No se encontró email</span>
+                </div>
+            </div>
+            
+            <button id="verify-button" class="button">Verificar Cuenta</button>
+            
+            <div id="result-message"></div>
+            
+            <div class="console">
+                <div class="console-title">Consola (simulación):</div>
+                <div id="console-output"></div>
+            </div>
+            
+            <div class="instructions">
+                <h3>Instrucciones para probar:</h3>
+                <ul>
+                    <li>Agrega parámetros a la URL como: ?token=abc123&email=usuario@ejemplo.com</li>
+                    <li>Haz clic en "Verificar Cuenta" para simular el proceso</li>
+                    <li>Los parámetros se mostrarán en la página y en la consola</li>
+                </ul>
+            </div>
+            
+            <div class="footer">
+                &copy; 2023 BioFX. Todos los derechos reservados.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para obtener parámetros de la URL
+        function getUrlParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get('token');
+            const email = urlParams.get('email');
+            
+            return { token, email };
+        }
+        
+        // Función para mostrar los parámetros en la página
+        function displayParams() {
+            const { token, email } = getUrlParams();
+            
+            document.getElementById('token-value').textContent = token || 'No se encontró token';
+            document.getElementById('email-value').textContent = email || 'No se encontró email';
+            
+            // Mostrar en consola simulada
+            const consoleOutput = document.getElementById('console-output');
+            consoleOutput.innerHTML = '';
+            
+            if (token) {
+                consoleOutput.innerHTML += `<div>Token capturado: ${token}</div>`;
+            }
+            
+            if (email) {
+                consoleOutput.innerHTML += `<div>Email capturado: ${email}</div>`;
+            }
+            
+            if (!token && !email) {
+                consoleOutput.innerHTML = '<div>No se encontraron parámetros en la URL.</div>';
+            }
+        }
+        
+        // Función para simular la verificación
+        function simulateVerification() {
+            const { token, email } = getUrlParams();
+            const resultMessage = document.getElementById('result-message');
+            const verifyButton = document.getElementById('verify-button');
+            const consoleOutput = document.getElementById('console-output');
+            
+            // Deshabilitar el botón durante la simulación
+            verifyButton.disabled = true;
+            verifyButton.textContent = 'Verificando...';
+            
+            // Limpiar mensaje anterior
+            resultMessage.innerHTML = '';
+            resultMessage.className = '';
+            
+            // Verificar que tengamos ambos parámetros
+            if (!token || !email) {
+                setTimeout(() => {
+                    resultMessage.innerHTML = 'Error: Faltan parámetros en la URL.';
+                    resultMessage.className = 'error';
+                    consoleOutput.innerHTML += '<div style="color: #fc8181;">Error: Faltan parámetros token o email.</div>';
+                    verifyButton.disabled = false;
+                    verifyButton.textContent = 'Verificar Cuenta';
+                }, 1000);
+                return;
+            }
+            
+            // Simular una llamada al backend
+            setTimeout(() => {
+                // Simular éxito (en un caso real, esto vendría del backend)
+                const success = Math.random() > 0.2; // 80% de probabilidad de éxito
+                
+                if (success) {
+                    resultMessage.innerHTML = '¡Cuenta verificada exitosamente!';
+                    resultMessage.className = 'success';
+                    consoleOutput.innerHTML += '<div style="color: #68d391;">Verificación exitosa simulada.</div>';
+                } else {
+                    resultMessage.innerHTML = 'Error: Token inválido o expirado.';
+                    resultMessage.className = 'error';
+                    consoleOutput.innerHTML += '<div style="color: #fc8181;">Error: Token inválido o expirado.</div>';
+                }
+                
+                verifyButton.disabled = false;
+                verifyButton.textContent = 'Verificar Cuenta';
+            }, 2000);
+        }
+        
+        // Inicializar la página cuando se carga
+        document.addEventListener('DOMContentLoaded', function() {
+            displayParams();
+            
+            // Agregar evento al botón de verificación
+            document.getElementById('verify-button').addEventListener('click', simulateVerification);
+            
+            // Mostrar en la consola real también
+            const { token, email } = getUrlParams();
+            console.log('Parámetros capturados:');
+            console.log('Token:', token);
+            console.log('Email:', email);
+        });
+    </script>
+</body>
+</html>
