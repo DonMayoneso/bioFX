@@ -71,17 +71,10 @@ window.addEventListener('load', () => {
     promoOverlay.style.display = 'block';
 });
 
-// Función para cerrar o minimizar
+// Función para cerrar el popup
 function handleClosePopup() {
-    if (!isMinimized) {
-        // Minimizar popup a la esquina
-        promoPopup.classList.add('minimized');
-        promoOverlay.style.display = 'none'; 
-        isMinimized = true;
-    } else {
-        // Cerrar totalmente
-        promoPopup.style.display = 'none';
-    }
+    promoPopup.style.display = 'none';
+    promoOverlay.style.display = 'none';
 }
 
 // Cerrar con botón
@@ -762,7 +755,7 @@ function inicializarCarrusel(promociones) {
             : '';
         
         // Usar la nueva propiedad textoPosicion para la posición, y textoAlineacion para la alineación
-        const textoPosicion = promo.textoPosicion || 'izquierda'; // Valor por defecto
+        const textoPosicion = promo.textoPosicion || 'izquierda';
         const imagenPosicion = textoPosicion === 'izquierda' ? 'derecha' : 'izquierda';
         
         carruselHTML += `

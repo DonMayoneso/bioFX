@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "titulo": "bioFX: Tu aliado en salud y bienestar",
+    "descripcion": "Suplementos y vitaminas de alta calidad, respaldados por ciencia y medicina funcional.",
+    "botonTexto": "Explora nuestros productos",
+    "botonUrl": "categories",
+    "imagen": "assets/extras/control.png",
+    "background": "assets/extras/bg1.jpg",
+    "textoAlineacion": "izquierda",
+    "textoPosicion": "derecha",
+    "imagenAlineacion": "izquierda",
+    "fondo": "imagen",
+    "colorTexto": "#ffffff"
+  },
+  {
+    "id": 2,
+    "titulo": "Descubre nuestras HERRAMIENTAS más populares",
+    "descripcion": "Apoya tu sistema inmunológico, digestivo y energía diaria",
+    "botonTexto": "Descubrir",
+    "botonUrl": "#productos",
+    "imagen": "assets/extras/banner2.png",
+    "background": "assets/extras/bg2.jpg",
+    "textoAlineacion": "izquierda",
+    "textoPosicion": "derecha",
+    "imagenAlineacion": "izquierda",
+    "fondo": "imagen",
+    "colorTexto": "#ffffff"
+  },
+  {
+    "id": 3,
+    "titulo": "Promoción exclusiva por tiempo limitado",
+    "descripcion": "Envío gratis por lanzamiento de bioFX",
+    "botonTexto": "Aprovechar oferta",
+    "botonUrl": "#calmantes",
+    "imagen": "assets/extras/control.png",
+    "background": "assets/extras/bg3.jpg",
+    "textoAlineacion": "izquierda",
+    "textoPosicion": "derecha",
+    "imagenAlineacion": "izquierda",
+    "fondo": "imagen",
+    "colorTexto": "#18474c"
+  },
+  {
+    "id": 4,
+    "titulo": "Respaldado por medicina funcional",
+    "descripcion": "Cada producto seleccionado pensando en tu salud integral",
+    "botonTexto": "Conócenos mejor",
+    "botonUrl": "#calmantes",
+    "imagen": "assets/extras/banner4.png",
+    "background": "assets/extras/bg4.jpg",
+    "textoAlineacion": "izquierda",
+    "textoPosicion": "derecha",
+    "imagenAlineacion": "izquierda",
+    "fondo": "imagen",
+    "colorTexto": "#ffffff"
+  }
+]

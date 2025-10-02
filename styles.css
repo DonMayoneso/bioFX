@@ -489,7 +489,7 @@ body {
     justify-content: center;
 }
 
-/* IMÁGENES MODIFICADAS - Sin bordes ni sombras */
+/* IMÁGENES */
 .carousel-image img {
     max-height: 350px;
     width: auto;
@@ -3033,7 +3033,7 @@ body {
     height: 100%;
     background: rgba(0,0,0,0.6);
     z-index: 998;
-    display: none; /* oculto por defecto */
+    display: none;
 }
 
 /* Popup grande en el centro */
@@ -3044,13 +3044,13 @@ body {
     transform: translate(-50%, -50%);
     width: 600px;
     height: 600px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0);
     border-radius: 10px;
     box-shadow: 0 6px 15px rgba(0,0,0,0.3);
     z-index: 999;
     padding: 10px;
     transition: all 0.4s ease-in-out;
-    display: none; /* oculto al inicio */
+    display: none;
 }
 
 .promo-popup img {
@@ -3065,7 +3065,7 @@ body {
     top: -12px;
     right: -12px;
     background-color: var(--danger, #dc3545);
-    color: white;
+    color: rgb(255, 255, 255);
     width: 28px;
     height: 28px;
     border-radius: 50%;
@@ -3079,23 +3079,6 @@ body {
 
 .close-popup:hover {
     background-color: #c82333;
-}
-
-/* Estado minimizado (esquina inferior derecha) - MODIFICADO */
-.promo-popup.minimized {
-    top: auto;
-    left: auto;
-    bottom: 100px; /* Cambiado de 30px a 100px para que quede arriba del WhatsApp */
-    right: 30px;
-    width: 200px;
-    height: 200px;
-    transform: none;
-    z-index: 1001; /* Añadido: mayor que el WhatsApp (1000) */
-}
-
-/* Si está minimizado, el overlay desaparece */
-.promo-popup.minimized + .promo-overlay {
-    display: none;
 }
 
 /*RESPONSIVE */
