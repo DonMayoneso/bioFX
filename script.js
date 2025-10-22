@@ -235,9 +235,6 @@ function abrirProducto(id) {
                 ${producto.logo ? `<img src="${producto.logo}" alt="Logo ${producto.nombre}" class="modal-logo">` : ''}
             </div>
             
-            <!-- Disclaimer en la posición correcta - justo antes de las acciones -->
-            ${producto.disclaimer ? `<div class="product-disclaimer">${formatearTexto(producto.disclaimer)}</div>` : ''}
-            
             <div class="description-tabs">
                 <div class="description-tab active" data-tab="descripcion">Descripción</div>
                 <div class="description-tab" data-tab="funcion">Para qué funciona</div>
@@ -261,6 +258,9 @@ function abrirProducto(id) {
                 ${formatearTexto(producto.descripciones.otros)}
             </div>
 
+            <!-- Disclaimer en la posición correcta - justo antes de las acciones -->
+            ${producto.disclaimer ? `<div class="product-disclaimer">${formatearTexto(producto.disclaimer)}</div>` : ''}
+           
             <div class="product-actions">
                 <div class="quantity-control">
                     <button class="quantity-btn" onclick="cambiarCantidad(-1)">

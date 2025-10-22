@@ -1084,11 +1084,11 @@ body {
 /* Disclaimer - POSICIÓN MODIFICADA */
 .product-disclaimer {
     background-color: #fff3cd00;
-    border: 1px solid #ffeaa700;
+    border: 0px solid #ffeaa700;
     color: #85650400;
-    padding: 15px;
+    padding: 0px;
     border-radius: 5px;
-    margin: 20px 0;
+    margin: 0px 0;
     font-size: 14px;
 }
 
